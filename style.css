@@ -1,3 +1,82 @@
+:root {
+    --col-01: #f8f8f8;
+    --col-02: #080808;
+    --col-03: #202020;
+}
 body {
-    background: red;
+    color: var(--col-01);
+    background: var(--col-02);
+    font-family: monospace;
+}
+pre, h3, hr {
+    text-align: center;
+}
+pre {
+    font-size: 1.8vw;
+}
+h3 {
+    margin-bottom: 20px;
+}
+hr {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+form {
+    width: 420px;
+    margin: auto;
+}
+.vr {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+label {
+    width: 200px;
+    margin-right: 10px;
+    text-align: left;
+}
+#run {
+    display: block;
+    font-weight: bold;
+    font-size: medium;
+    padding: 10px 20px 10px;
+    margin: 30px auto 20px;
+}
+#run:hover {
+    font-size: large;
+}
+input {
+    color: var(--col-01);
+    border-color: var(--col-01);
+    border-style: solid;
+    padding: 5px;
+    background-color: var(--col-02);
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.hide {
+    display: none;
+}
+table {
+    width: 1300px;
+    margin: 30px auto;
+    padding: 10px;
+    table-layout: fixed;
+    text-align: left;
+    border: 2px solid var(--col-01);
+}
+tr:nth-child(even) {
+    background-color: var(--col-03);
+}
+th {
+    padding-bottom: 7px;
 }
