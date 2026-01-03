@@ -45,6 +45,10 @@ label {
 }
 #run:hover {
     font-size: large;
+    cursor: pointer;
+}
+#run:active {
+    background-color: var(--col-03);
 }
 input {
     color: var(--col-01);
