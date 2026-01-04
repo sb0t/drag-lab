@@ -21,40 +21,100 @@ _______                                           .---.
              |_|     \ \._,\ '/\'. __//                \ \._,\ '/'  `'-'`   
                       `--'  `"  `'---'                  `--'  `"            
         </pre>
-        <h3>variables</h3>
-        <hr>
-        <form>
-            <div class="vr">
-                <!--Variable Row-->
-                <label>Mass: </label>
-                <input name="m" type="number" value="10" step="1">
+        <div id="slide">
+            <div id="vars">
+                <h3>variables</h3>
+                <hr>
+                <form>
+                    <div class="vr">
+                        <!--Variable Row-->
+                        <label>
+                            Mass: 
+                            <span class="unit">(kg)</span>
+                        </label>
+                        <input name="m" type="number" value="10" step="1" min="0">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Angle: 
+                            <span class="unit">(°)</span>
+                        </label>
+                        <input name="B" type="number" value="45" step="1">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Coefficient of Friction: 
+                        </label>
+                        <input name="u" type="number" value="0.45" step="0.01" min="0">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Area: 
+                            <span class="unit">(m²)</span>
+                        </label>
+                        <input name="A" type="number" value="0.01" step="0.01" min="0">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Initial Velocity: 
+                            <span class="unit">(m/s)</span>
+                        </label>
+                        <input name="v0" type="number" value="20" step="1">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Fluid Density: 
+                            <span class="unit">(kg/m³)</span>
+                        </label>
+                        <input name="p" type="number" value="1.3" step="0.1" min="0">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Time Interval: 
+                            <span class="unit">(s)</span>
+                        </label>
+                        <input name="dt" type="number" value="0.001" step="0.001" min="0">
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Graph Style: 
+                        </label>
+                        <select name="gs">
+                            <option value="xy">cartesian</option>
+                            <option value="pt" selected="selected">position-time</option>
+                            <option value="vt">velocity-time</option>
+                            <option value="at">acceleration-time</option>                        
+                        </select>
+                    </div>
+                    <div class="vr">
+                        <label>
+                            Pre-Generate:
+                            <span class="unit">(columns)</span>
+                        </label>
+                        <input name="pg" type="number" value="1" step="100" min="0">
+                    </div>
+                </form>
             </div>
-            <div class="vr">
-                <label>Angle: </label>
-                <input name="B" type="number" value="45" step="1">
+            <div id="graph" class="hide">
+                <div id="thumb">
+                    <!--Thumbnail-->
+                    <div id="thumb-txt">scroll to generate</div>
+                </div>
+                <div id="graph-wrap" class="hide">
+                    <button id="menu" onclick="toggleMenu()">㆔</button>
+                    <div id="graph-items" class="hide">
+                        <button id="float">&#128204;&#xfe0e;</button>
+                        <button id="move">↔</button>
+                    </div>
+                </div>
+                <canvas class="hide"></canvas>
             </div>
-            <div class="vr">
-                <label>Coefficient of Friction: </label>
-                <input name="u" type="number" value="0.45" step="0.01">
-            </div>
-            <div class="vr">
-                <label>Area: </label>
-                <input name="A" type="number" value="0.01" step="0.01">
-            </div>
-            <div class="vr">
-                <label>Initial Velocity: </label>
-                <input name="v0" type="number" value="20" step="1">
-            </div>
-            <div class="vr">
-                <label>Fluid Density: </label>
-                <input name="p" type="number" value="1.3" step="0.1">
-            </div>
-            <div class="vr">
-                <label>Time Interval: </label>
-                <input name="dt" type="number" value="0.001" step="0.001">
-            </div>
-            <input id="run" type="button" value="run" onclick="main(this.form)">
-        </form>
+        </div>
+        <input id="run" type="button" value="run" onclick="main()">
+        <div id="hidden-header" class="hide">
+            <hr>
+            <input id="export" class="hide" type="button" value="export .csv" onclick="toCSV()">
+        </div>
         <table class="hide">
             <thead>
                 <tr>

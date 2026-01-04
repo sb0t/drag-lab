@@ -8,17 +8,24 @@ body {
     background: var(--col-02);
     font-family: monospace;
 }
+#slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
 pre, h3, hr {
     text-align: center;
 }
 pre {
     font-size: 1.8vw;
+    margin-bottom: 0px;
 }
 h3 {
     margin-bottom: 20px;
 }
 hr {
-    width: 60%;
+    width: 70%;
     margin: auto;
     margin-bottom: 30px;
 }
@@ -33,29 +40,38 @@ form {
 }
 label {
     width: 200px;
+    display: flex;
+    flex-direction: column;
     margin-right: 10px;
     text-align: left;
 }
-#run {
+.unit {
+    opacity: 0.7;
+    font-style: italic;
+}
+input[type=button]:hover {
+    cursor: pointer;
+    font-size: large;
+}
+input[type=button] {
     display: block;
     font-weight: bold;
     font-size: medium;
     padding: 10px 20px 10px;
-    margin: 30px auto 20px;
+    margin: 30px auto 40px;
 }
-#run:hover {
-    font-size: large;
-    cursor: pointer;
-}
-#run:active {
+input[type=button]:active {
     background-color: var(--col-03);
 }
-input {
+input, select {
     color: var(--col-01);
     border-color: var(--col-01);
     border-style: solid;
     padding: 5px;
     background-color: var(--col-02);
+}
+select {
+    width: 200px;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -69,6 +85,93 @@ input[type=number] {
 }
 .hide {
     display: none;
+}
+#graph {
+    position: relative;
+}
+#menu {
+    position: absolute;
+    top: 30px;
+    left: 480px;
+
+    z-index: 10;
+    padding: 6px 10px;
+    font-family: monospace;
+    background: var(--col-02);
+    color: var(--col-01);
+    border: 2px solid var(--col-01);
+}
+#float, #move, #download {
+    width: 25px;
+    height: 25px;
+    margin: 3px 0px 3px;
+    color: var(--col-01);
+    background: var(--col-02);
+    border: 2px solid var(--col-03);
+}
+#graph-items.hide {
+    display: none;
+}
+#graph-items {
+    display: block;
+    position: absolute;
+    top: 65px;
+    left: 481px;
+    width: 20px;
+    height: 59px;
+    margin-bottom: 20px;
+    align-content: center;
+
+    z-index: 10;
+    padding: 0px 8px 3px 3px;
+    /* top right bottom left */
+    font-family: monospace;
+    background-color: var(--col-02);
+    color: var(--col-01);
+    border: 2px solid var(--col-01);
+}
+#graph.floating {
+    position: fixed;
+    top: 0px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#graph.xPos {
+    left: 63.5vw;
+}
+#graph.yPos {
+    top: 24vw;
+}
+#thumb {
+    margin-top: -17px;
+    z-index: 1;
+
+    --s: 50px; /* the size on the corner */
+    --t: 3px;  /* the thickness of the border */
+    --g: 50px; /* the gap between the border and image */
+    
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid var(--col-01); /* the color here */
+    outline-offset: calc(-1*var(--t));
+    mask:
+        conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+        0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+        conic-gradient(#000 0 0) content-box;
+    transition: .4s;
+}
+#thumb:hover {
+    outline-offset: calc(-1*var(--g));
+}
+#thumb-txt {
+    display: grid;
+    place-items: center;
+    height: 200px;
+    width: 400px;
+    font-size: large;
+    /* border: 3px solid green; */
+}
+canvas {
+    z-index: 0;
 }
 table {
     width: 1300px;
