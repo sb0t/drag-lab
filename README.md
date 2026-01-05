@@ -2,8 +2,11 @@
 
 A retro physics simulator that real-time computes motion under drag and displays the results in a dynamic table and a customizable graph.
 
-![Drag Lab Preview](preview.gif)
-*Software by Stefano Bottero & Table Formulas w/Matteo Bellieni*
+<img src="preview.gif" width="70%" height="70%"/>
+<br><br>
+
+*Software by Stefano Bottero and Table Formulas w/Matteo Bellieni*
+
 
 Built in vanilla HTML, CSS & JS for an AP Physics C: Mechanics assignment.
 

@@ -523,7 +523,7 @@ function main() {
         hasRun = false;
     } else {
         init();
-        runButton.value = "off";
+        runButton.value = "reset";
         loop(varForm.pg.value);
         observerActive = true;
         if(path.length >= 2) {
