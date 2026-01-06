@@ -5,15 +5,16 @@ const COLORS = {
 };
 
 let varForm = document.querySelector("form");
-const runButton = document.getElementById("run");
-const exportButton = document.getElementById("export");
+const runBtn = document.getElementById("run");
+const exportBtn = document.getElementById("export");
 
 const graphWrap = document.getElementById("graph-wrap");
-const floatButton = document.getElementById("float");
-const moveButton = document.getElementById("move");
+const floatBtn = document.getElementById("float");
+const moveBtn = document.getElementById("move");
 
 let hasRun = false;
 const hiddenHeader = document.getElementById("hidden-header");
+const topBtn = document.getElementById("top");
 const slide = document.getElementById("slide");
 
 const graph = document.getElementById("graph");
@@ -122,7 +123,7 @@ window.onclick = function(event) {
         if(dropVis) toggleMenu();
     }
 }
-floatButton.addEventListener("click", () => {
+floatBtn.addEventListener("click", () => {
     if(window.getComputedStyle(graph).getPropertyValue("position") == "fixed") {
         switchPos(iPos, true);
         iPos = 1;
@@ -131,7 +132,7 @@ floatButton.addEventListener("click", () => {
     toggleMenu(); // auto-keep-open
     dropVis = true;
 });
-moveButton.addEventListener("click", () => {
+moveBtn.addEventListener("click", () => {
     if(window.getComputedStyle(graph).getPropertyValue("position") == "fixed") {
         switchPos(iPos, false);
         toggleMenu(); // auto-keep-open
@@ -493,6 +494,13 @@ function toCSV() {
     document.body.removeChild(link);
 }
 
+window.addEventListener("scroll", () => {
+    topBtn.classList.toggle("hide", window.scrollY < 1000)
+});
+function toTop() {
+    window.scrollTo(0, 155);
+}
+
 varForm.addEventListener("input", live);
 varForm.addEventListener("change", live); // select dropdown
 function live() {
@@ -518,12 +526,12 @@ function main() {
     if(hasRun) {
         observerActive = false;
         reset();
-        runButton.value = "run";
+        runBtn.value = "run";
         setGraphUI(false);
         hasRun = false;
     } else {
         init();
-        runButton.value = "reset";
+        runBtn.value = "reset";
         loop(varForm.pg.value);
         observerActive = true;
         if(path.length >= 2) {
