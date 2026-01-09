@@ -193,5 +193,61 @@ tr:nth-child(even) {
     background-color: var(--col-03);
 }
 th {
-    padding-bottom: 7px;
+    padding-bottom: 8px;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+u {
+    border-bottom: 1px dashed var(--col-01);
+    text-decoration: none;
+}
+.tooltiptext {
+    visibility: hidden;
+    background-color: var(--col-02);
+    color: var(--col-01);
+    text-align: center;
+    padding: 5px 0;
+    border: 1px solid var(--col-01);
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    padding-inline: 2px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7);
+}
+.tooltiptext.top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+}
+.tooltiptext.left {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 105%;
+    margin-right: 5px;
+}
+.tooltiptext::after {
+    content: " ";
+    position: absolute;
+    border-style: solid;
+}
+.tooltiptext.top::after {
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -7px;
+    border-width: 7px;
+    border-color: var(--col-01) transparent transparent transparent;
+}
+.tooltiptext.left::after {
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -7px;
+    border-width: 7px;
+    border-color: transparent transparent transparent var(--col-01);
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

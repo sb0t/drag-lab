@@ -5,6 +5,7 @@
         <title>Drag Lab</title>
         <link rel="stylesheet" href="style.css">
         <script defer src="script.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     </head>
     <body>
         <pre>                                                                                        
@@ -77,6 +78,13 @@ _______                                           .---.
                     </div>
                     <div class="vr">
                         <label>
+                            Gravity:
+                            <span class="unit">(m/s²)</span>
+                        </label>
+                        <input name="g" type="number" value="9.807" step="0.003">
+                    </div>
+                    <div class="vr">
+                        <label>
                             Graph Style: 
                         </label>
                         <select name="gs">
@@ -120,14 +128,54 @@ _______                                           .---.
             <thead>
                 <tr>
                     <th>Time</th>
-                    <th>Angle</th>
-                    <th>X Acceleration</th>
-                    <th>Y Acceleration</th>
-                    <th>Velocity</th>
-                    <th>X Velocity</th>
-                    <th>Y Velocity</th>
-                    <th>X Position</th>
-                    <th>Y Position</th>
+                    <th>
+                        <span class="tooltip">
+                            <u>Angle</u>
+                            <span class="tooltiptext top">$$\beta = \arctan\biggl(\frac{v_y}{v_x}\biggr)$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>X Acceleration</u>
+                            <span class="tooltiptext top">$$a_x = -\cos(\beta)\cdot p\cdot v^2\cdot\mu\cdot A/(2\cdot m)$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>Y Acceleration</u>
+                            <span class="tooltiptext top">$$a_y = -\sin(\beta)\cdot p\cdot v^2\cdot\mu\cdot A/(2\cdot m)-g$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>Velocity</u>
+                            <span class="tooltiptext top">$$v = \sqrt{v_x^2+v_y^2}$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>X Velocity</u>
+                            <span class="tooltiptext top">$$v_x = pv_x+a_x\cdot dt$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>Y Velocity</u>
+                            <span class="tooltiptext top">$$v_y = pv_y+a_y\cdot dt$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>X Position</u>
+                            <span class="tooltiptext top">$$x = px+v_x\cdot dt+a_x\cdot dt^2/2$$</span>
+                        </span>
+                    </th>
+                    <th>
+                        <span class="tooltip">
+                            <u>Y Position</u>
+                            <span class="tooltiptext left">$$y = py+v_y\cdot dt+a_y\cdot dt^2/2$$</span>
+                        </span>
+                    </th>
                 </tr>
             </thead>
             <tbody>

@@ -77,6 +77,10 @@ function rad(deg) {
     return deg * (Math.PI/180);
 }
 
+function format(n) {
+    return Number(n.toPrecision(12)).toString();
+}
+
 let iPos = 1, dropVis = "false";
 function toggleMenu() {
     document.getElementById("graph-items").classList.toggle("hide");
@@ -160,7 +164,7 @@ function build() {
     const tr = document.createElement("tr");
     for(let j = 0; j < rowData.length; j++) {
         const td = document.createElement("td");
-        let str = rowData[j].toString();
+        let str = format(rowData[j]);
         if(str.length > 14) {
             str = str.slice(0, 14) + "...";
         }
@@ -175,7 +179,7 @@ function init() {
     state.B = rad(varForm.B.value);
     state.v = parseFloat(varForm.v0.value);
     state.ax = (-Math.cos(state.B)*varForm.p.value*Math.pow(state.v, 2)*varForm.u.value*varForm.A.value/(2*varForm.m.value));
-    state.ay = (-Math.sin(state.B)*varForm.p.value*Math.pow(state.v, 2)*varForm.u.value*varForm.A.value/(2*varForm.m.value))-9.807;
+    state.ay = (-Math.sin(state.B)*varForm.p.value*Math.pow(state.v, 2)*varForm.u.value*varForm.A.value/(2*varForm.m.value))-varForm.g.value;
     state.vx = Math.sin(state.B)*state.v;
     state.vy = Math.cos(state.B)*state.v;
     state.x = 0;
@@ -384,13 +388,13 @@ function loop(rounds) {
     for(let i = 0; i < rounds; i++) {
         state.t += parseFloat(varForm.dt.value);
         state.x = state.x+state.vx*varForm.dt.value+state.ax*Math.pow(varForm.dt.value, 2)/2;
-        state.y = state.y+state.vy*varForm.dt.value+state.ay*Math.pow(varForm.dt.value, 2)/2;;
-        state.B = Math.atan(state.y/state.x);
+        state.y = state.y+state.vy*varForm.dt.value+state.ay*Math.pow(varForm.dt.value, 2)/2;
+        state.B = Math.atan(state.vy/state.vx);
         state.vx = state.vx+state.ax*varForm.dt.value;
         state.vy = state.vy+state.ay*varForm.dt.value;
         state.v = Math.sqrt(Math.pow(state.vx, 2)+Math.pow(state.vy, 2));
         state.ax = (-Math.cos(state.B)*varForm.p.value*Math.pow(state.v, 2)*varForm.u.value*varForm.A.value/(2*varForm.m.value));
-        state.ay = (-Math.sin(state.B)*varForm.p.value*Math.pow(state.v, 2)*varForm.u.value*varForm.A.value/(2*varForm.m.value))-9.807;
+        state.ay = (-Math.sin(state.B)*varForm.p.value*Math.pow(state.v, 2)*varForm.u.value*varForm.A.value/(2*varForm.m.value))-varForm.g.value;
         build();
         switch(varForm.gs.value) {
             case "xy":
